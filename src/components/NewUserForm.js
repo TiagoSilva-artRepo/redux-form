@@ -49,9 +49,8 @@ const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
     };
 
     const radioInput = ({ input, label, meta }) => {
-        const className = `field ${meta.error && meta.touched ? "error" : ""}`;
         return (
-            <div className={className}>
+            <div>
                 <FormLabel>{label}</FormLabel>
                 <RadioGroup row name="gender" {...input}>
                     <FormControlLabel value="female" control={<Radio />} label="female" />
@@ -127,4 +126,5 @@ const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
 
 export default reduxForm({
     form: "newUserForm",
+    validate: validateForm,
 })(NewUserForm);

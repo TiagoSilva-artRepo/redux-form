@@ -1,10 +1,10 @@
 const validateForm = (formValues) => {
     const errors = {};
-    if (!formValues.title) {
+    if (!formValues.firstName) {
         errors.firstName = "You must enter the first name";
     }
 
-    if (!formValues.description) {
+    if (!formValues.lastName) {
         errors.lastName = "You must enter the last name";
     }
 
