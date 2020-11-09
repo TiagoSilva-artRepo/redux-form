@@ -1,13 +1,16 @@
-export const selectUser = (user) => {
-    return {
-        type: "USER_SELECTED",
-        payload: user,
-    };
-};
+let newId=0;
 
 export const addUser = (user) => {
     return {
-        type: "USER_ADDED",
-        payload: user,
+        type: "ADD_USER",
+        payload: {id: newId++, ...user},
     };
 };
+
+export const deleteUser = (id) => {
+    return {
+        type: "DELETE_USER",
+        payload: id,
+    };
+};
+

@@ -1,16 +1,16 @@
-const initialUsers = [{}];
+const initialUsers = [];
 
 export const Users = (state = initialUsers, action) => {
     switch (action.type) {
-        case "USER_ADDED":
+        case "ADD_USER":
             return [
                 ...state,
                 {
                     ...action.payload,
                 },
             ];
-        case "USER_SELECTED":
-            return state;
+        case "DELETE_USER":
+            return state.filter( (id) => id === action.payload);
         default:
             return state;
     }
