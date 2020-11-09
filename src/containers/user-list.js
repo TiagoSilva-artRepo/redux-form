@@ -23,37 +23,32 @@ const UserList = ({ users, selectUser }) => {
     };
 
     return (
-        <ul>
-            {" "}
             <TableContainer component={Paper}>
                 <Table aria-label="simple table">
                     <TableHead>
-                        <TableRow>
-                            <TableCell>First Name</TableCell>
-                            <TableCell>Last Name</TableCell>
-                            <TableCell>Age</TableCell>
-                            <TableCell>Gender</TableCell>
-                            <TableCell>Edit</TableCell>
-                            <TableCell>Delete</TableCell>
+                        <TableRow key="header">
+                            <TableCell key="header-firstName">First Name</TableCell>
+                            <TableCell key="header-lastName">Last Name</TableCell>
+                            <TableCell key="header-age">Age</TableCell>
+                            <TableCell key="header-gender">Gender</TableCell>
+                            <TableCell key="header-edit">Edit</TableCell>
+                            <TableCell key="header-delete">Delete</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {createListItem().map((row) => (
-                            <TableRow key={row.firstName}>
-                                <TableCell>
-                                    {row.firstName}
-                                </TableCell>
-                                <TableCell>{row.lastName}</TableCell>
-                                <TableCell>{row.age}</TableCell>
-                                <TableCell>{row.gender}</TableCell>
-                                <TableCell><Button color="primary" variant="outlined" size="small">Edit</Button></TableCell>
-                                <TableCell><Button color="secondary" variant="outlined" size="small">Delete</Button></TableCell>
+                    <TableBody key="body">
+                        {createListItem().map((user) => (
+                            <TableRow key={user.id} onClick={() => selectUser(user)}>
+                                <TableCell key={"firstName-row-" + user.id}>{user.firstName}</TableCell>
+                                <TableCell key={"lastName-row-" + user.id}>{user.lastName}</TableCell>
+                                <TableCell key={"age-row-" + user.id}>{user.age}</TableCell>
+                                <TableCell key={"gender-row-" + user.id}>{user.gender}</TableCell>
+                                <TableCell key={"edit-row-" + user.id}><Button key={"button-edit-" + user.id} color="primary" variant="outlined" size="small">Edit</Button></TableCell>
+                                <TableCell key={"delete-row-" + user.id}><Button key={"button-delete-" + user.id} color="secondary" variant="outlined" size="small">Delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-        </ul>
     );
 };
 
