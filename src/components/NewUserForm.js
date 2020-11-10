@@ -13,6 +13,7 @@ import { Field, reduxForm } from "redux-form";
 import validateForm from "../utils/formValidation";
 
 const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
+
     const renderError = ({ error, touched }) => {
         if (touched && error) {
             return (
@@ -23,11 +24,11 @@ const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
         }
     };
 
-    const textInput = ({ input, label, meta }) => {
+    const textInput = ({ input, label, meta, value }) => {
         return (
             <div>
                 <InputLabel htmlFor="standard-required">{label}</InputLabel>
-                <TextField id="standard-required" variant="outlined" {...input} />
+                <TextField id="standard-required" variant="outlined" value={value} {...input} />
                 {renderError(meta)}
             </div>
         );
@@ -67,56 +68,56 @@ const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
             <form autoComplete="off" onSubmit={handleSubmit}>
                 <Grid container justify="center" alignItems="center">
                     <Grid item xs={6}>
-                    <Field name="firstName" component={textInput} label="First Name:" />
+                        <Field name="firstName" component={textInput} label="First Name:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="lastName" component={textInput} label="Last Name:" />
+                        <Field name="lastName" component={textInput} label="Last Name:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="age" component={textInput} label="Age:" />
+                        <Field name="age" component={textInput} label="Age:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="gender" component={radioInput} label="Gender:" />
+                        <Field name="gender" component={radioInput} label="Gender:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="email" component={textInput} label="Email:" />
+                        <Field name="email" component={textInput} label="Email:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="adress" component={textInput} label="Adress:" />
+                        <Field name="adress" component={textInput} label="Adress:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="zipCode" component={textInput} label="Zip-Code:" />
+                        <Field name="zipCode" component={textInput} label="Zip-Code:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field
-                        name="citizenCardNumber"
-                        component={textInput}
-                        label="Citizen Card Number:"
-                    />
+                        <Field
+                            name="citizenCardNumber"
+                            component={textInput}
+                            label="Citizen Card Number:"
+                        />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="taxNumber" component={textInput} label="Tax Number:" />
+                        <Field name="taxNumber" component={textInput} label="Tax Number:" />
                     </Grid>
                     <Grid item xs={6}>
-                    <Field name="Password" component={passwordInput} label="Password:" />
+                        <Field name="Password" component={passwordInput} label="Password:" />
                     </Grid>
                     <Grid item xs={12}>
-                    <Button
-                        type="submit"
-                        disabled={pristine || submitting}
-                        variant="contained"
-                        color="primary"
-                    >
-                        Submit
-                    </Button>
-                    <Button
-                        disabled={submitting}
-                        onClick={reset}
-                        variant="contained"
-                        color="secondary"
-                    >
-                        Clear Values
-                    </Button>
+                        <Button
+                            type="submit"
+                            disabled={pristine || submitting}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Submit
+                        </Button>
+                        <Button
+                            disabled={submitting}
+                            onClick={reset}
+                            variant="contained"
+                            color="secondary"
+                        >
+                            Clear Values
+                        </Button>
                     </Grid>
                 </Grid>
             </form>

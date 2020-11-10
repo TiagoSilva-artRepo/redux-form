@@ -2,6 +2,7 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { deleteUser } from "../actions/index";
+import { editUser } from "../actions/index";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -45,6 +46,7 @@ const UserList = ({ users, deleteUser }) => {
                             <TableCell key={"edit-row-" + user.id}>
                                 <Button
                                     key={"button-edit-" + user.id}
+                                    onClick = { user => editUser(user.id)}
                                     color="primary"
                                     variant="outlined"
                                     size="small"
@@ -54,8 +56,9 @@ const UserList = ({ users, deleteUser }) => {
                             </TableCell>
                             <TableCell key={"delete-row-" + user.id}>
                                 <Button
+                                    id={user.id}
                                     key={"button-delete-" + user.id}
-                                    onClick={(user) => deleteUser(user.id)}
+                                    onClick={ () => deleteUser(user.id)}
                                     color="secondary"
                                     variant="outlined"
                                     size="small"
