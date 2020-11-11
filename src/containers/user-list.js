@@ -12,7 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
-const UserList = ({ users, deleteUser }) => {
+const UserList = ({ users, deleteUser, editUser }) => {
     const createData = (id, firstName, lastName, age, gender) => {
         return { id, firstName, lastName, age, gender };
     };
@@ -46,7 +46,7 @@ const UserList = ({ users, deleteUser }) => {
                             <TableCell key={"edit-row-" + user.id}>
                                 <Button
                                     key={"button-edit-" + user.id}
-                                    onClick = { user => editUser(user.id)}
+                                    onClick={() => editUser(user)}
                                     color="primary"
                                     variant="outlined"
                                     size="small"
@@ -56,9 +56,8 @@ const UserList = ({ users, deleteUser }) => {
                             </TableCell>
                             <TableCell key={"delete-row-" + user.id}>
                                 <Button
-                                    id={user.id}
                                     key={"button-delete-" + user.id}
-                                    onClick={ () => deleteUser(user.id)}
+                                    onClick={() => deleteUser(user.id)}
                                     color="secondary"
                                     variant="outlined"
                                     size="small"
@@ -81,7 +80,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ deleteUser: deleteUser }, dispatch);
-}
+    return bindActionCreators({ deleteUser: deleteUser, editUser: editUser }, dispatch);
+} 
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

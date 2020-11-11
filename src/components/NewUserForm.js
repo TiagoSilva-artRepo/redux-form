@@ -12,8 +12,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validateForm from "../utils/formValidation";
 
-const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
-
+let NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
     const renderError = ({ error, touched }) => {
         if (touched && error) {
             return (
@@ -125,7 +124,8 @@ const NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
     );
 };
 
-export default reduxForm({
-    form: "newUserForm",
-    validate: validateForm,
-})(NewUserForm);
+export default NewUserForm = reduxForm({
+  form: 'newUserForm',
+  enableReinitialize: true,
+  validate: validateForm,
+})(NewUserForm)

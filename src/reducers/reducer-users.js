@@ -1,5 +1,4 @@
 const initialUsers = [];
-
 export const Users = (state = initialUsers, action) => {
     switch (action.type) {
         case "ADD_USER":
@@ -11,6 +10,8 @@ export const Users = (state = initialUsers, action) => {
             ];
         case "DELETE_USER":
             return state.filter(({ id }) => id !== action.payload);
+        case "EDIT_USER":
+            return action.payload;
         default:
             return state;
     }

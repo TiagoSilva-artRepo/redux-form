@@ -14,10 +14,11 @@ export const deleteUser = (id) => {
     };
 };
 
-export const editUser = (id) => {
+export const editUser = (user) => {
+    alert(user);
     return {
-        type: "DELETE_USER",
-        payload: id,
+        type: "EDIT_USER",
+        payload: user,
     };
 };
 
