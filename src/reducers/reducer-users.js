@@ -1,17 +1,23 @@
-const initialUsers = [];
-export const Users = (state = initialUsers, action) => {
+const Users = { all: [], user: {} };
+export const usersReducer = (state = Users, action) => {
     switch (action.type) {
         case "ADD_USER":
-            return [
+            return {
                 ...state,
-                {
-                    ...action.payload,
-                },
-            ];
+                all: [...state.all, action.payload],
+                user: {},
+            };
         case "DELETE_USER":
-            return state.filter(({ id }) => id !== action.payload);
+            return {
+                ...state,
+                all: state.all.filter(({ id }) => id !== action.payload),
+            };
         case "EDIT_USER":
-            return action.payload;
+            return {
+                ...state,
+                all: [...state.all],
+                user: {...action.payload},
+            };
         default:
             return state;
     }

@@ -126,6 +126,5 @@ let NewUserForm = ({ handleSubmit, pristine, reset, submitting }) => {
 
 export default NewUserForm = reduxForm({
   form: 'newUserForm',
-  enableReinitialize: true,
   validate: validateForm,
 })(NewUserForm)

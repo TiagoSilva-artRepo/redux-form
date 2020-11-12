@@ -5,19 +5,20 @@ import { connect } from "react-redux";
 import { addUser } from "../actions/index";
 import { reset } from 'redux-form';
 
-const UserForm = ({ addUser }) => {
+const UserForm = ({ addUser, editUser }) => {
 
     const submit = (values, dispatch) => {
         addUser(values);
         dispatch(reset("newUserForm"));
     }
 
-    return <NewUserForm onSubmit={submit} />;
+    return <NewUserForm initialValues={editUser} enableReinitialize={true} onSubmit={submit} />;
 };
 
 function mapStateToProps(state) {
     return {
-        users: state.users,
+        users: state.users.all,
+        editUser: state.users.user,
     };
 }
 

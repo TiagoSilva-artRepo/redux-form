@@ -15,7 +15,6 @@ export const deleteUser = (id) => {
 };
 
 export const editUser = (user) => {
-    alert(user);
     return {
         type: "EDIT_USER",
         payload: user,
