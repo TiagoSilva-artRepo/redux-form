@@ -16,7 +16,16 @@ export const usersReducer = (state = Users, action) => {
             return {
                 ...state,
                 all: [...state.all],
-                user: {...action.payload},
+                user: { ...action.payload },
+            };
+        case "UPDATE_USER":
+            const updateAll = state.all.map ((user) => {
+                return user.id === action.payload.id ? action.payload : user; 
+            });
+            return {
+                ...state,
+                all: [...updateAll],
+                user: { },
             };
         default:
             return state;

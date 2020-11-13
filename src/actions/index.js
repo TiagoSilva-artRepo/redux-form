@@ -1,10 +1,17 @@
-let newId=0;
+let newId = 0;
 
 export const addUser = (user) => {
-    return {
-        type: "ADD_USER",
-        payload: {id: newId++, ...user},
-    };
+    if (user.id === undefined) {
+        return {
+            type: "ADD_USER",
+            payload: { id: newId++, ...user },
+        };
+    } else {
+        return {
+            type: "UPDATE_USER",
+            payload: { ...user },
+        };
+    }
 };
 
 export const deleteUser = (id) => {
@@ -20,9 +27,3 @@ export const editUser = (user) => {
         payload: user,
     };
 };
-
-
-
-
-
-
